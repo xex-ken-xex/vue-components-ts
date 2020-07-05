@@ -168,16 +168,12 @@ export default class Ode extends Vue {
       // SVGGraphicsElement.getBBox()
       // 似たようなものに、element.getBoundingClientRect();があるが、ビューポートからの相対値を返す
       const bBox = (odeElement as SVGSVGElement).getBBox();
-      console.log('----' + id);
-      console.log(x, y, w, h);
-      console.log(bBox);
       if (
-        (bBox.x > x) &&
-        (bBox.x + bBox.width < x + w) &&
-        (bBox.y > y) &&
-        (bBox.y + bBox.height < y + h)
+        (bBox.x < x) &&
+        (bBox.x + bBox.width > x + w) &&
+        (bBox.y < y) &&
+        (bBox.y + bBox.height > y + h)
       ) {
-        console.log( 'in!!' + id );
         return true;
       }
     } else {
